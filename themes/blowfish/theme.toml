@@ -3,7 +3,7 @@
 name = "Blowfish"
 license = "MIT"
 licenselink = "https://github.com/nunocoracao/blowfish/blob/main/LICENSE"
-description = "A powerful, lightweight theme for Hugo built with Tailwind CSS."
+description = "Giuseppe Mattia Greco's personal website"
 
 homepage = "https://github.com/nunocoracao/blowfish/"
 demosite = "https://nunocoracao.github.io/blowfish/"
