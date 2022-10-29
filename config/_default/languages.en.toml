@@ -7,7 +7,7 @@ rtl = false
 
 title = "Giuseppe Mattia Greco"
 logo = "img/blowfish_logo_transparent.png"
-description = "A powerful, lightweight theme for Hugo built with Tailwind CSS."
+description = "Giuseppe Mattia Greco's personal site"
 copyright = "© 2022 Giuseppe Mattia Greco"
 
 dateFormat = "2 January 2006"
@@ -17,7 +17,7 @@ dateFormat = "2 January 2006"
   image = "img/blowfish_logo.png"
   headline = "I'm an engineering student at Università della Calabria, in Italy."
   bio = "I'm an engineering student at Università della Calabria, in Italy."
-  links = [
-    { twitter = "https://twitter.com/mgreek_" },
-    { github = "https://github.com/giumatt" },
-  ]
+  # links = [
+  #   { twitter = "https://twitter.com/mgreek_" },
+  #   { github = "https://github.com/giumatt" },
+  # ]
