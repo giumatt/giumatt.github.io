@@ -53,6 +53,7 @@ mainSections = ["home"]
   showWordCount = false
   showSummary = true
   sharingLinks = [ "linkedin", "twitter", "whatsapp", "pinterest", "reddit", "facebook", "email"]
+  contactLinks = ["email", "linkedin", "facebook", "twitter", "reddit"]
 
 [list]
   showBreadcrumbs = false

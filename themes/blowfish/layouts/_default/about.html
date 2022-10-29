@@ -1,15 +1,18 @@
-{{ define "main" }}
-  <article class="max-w-full">
-    <header>
-      {{ if .Params.showBreadcrumbs | default (.Site.Params.article.showBreadcrumbs | default false) }}
-        {{ partial "breadcrumbs.html" . }}
-      {{ end }}
-      <h1 class="mt-0 text-4xl font-extrabold text-neutral-900 dark:text-neutral">
-        {{ .Title | emojify }}
-      </h1>
-    </header>
-    <section class="text-left mt-50 prose dark:prose-invert">
-      {{ .Content | emojify }}
-    </section>
-  </article>
-{{ end }}
+    {{ define "main" }}
+    <article class="max-w-full">
+      <header>
+        {{ if .Params.showBreadcrumbs | default (.Site.Params.article.showBreadcrumbs | default false) }}
+          {{ partial "breadcrumbs.html" . }}
+        {{ end }}
+        <h1 class="mt-0 text-4xl font-extrabold text-neutral-900 dark:text-neutral">
+          {{ .Title | emojify }}
+        </h1>
+      </header>
+      <section class="text-left ml- mt-8 text-neutral-100 dark:text-neutral-invert">
+        {{ .Content | emojify }}
+      </section>
+      <footer class="pt-8">
+        {{ partial "contacts.html" . }}
+      </footer>
+    </article>
+  {{ end }}

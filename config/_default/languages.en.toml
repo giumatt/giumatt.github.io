@@ -5,18 +5,18 @@ isoCode = "en"
 weight = 1
 rtl = false
 
-title = "Giuseppe Mattia Greco"
+title = ""
 logo = "img/blowfish_logo_transparent.png"
-description = "Giuseppe Mattia Greco's personal site"
+description = "Giuseppe Mattia Greco's personal website"
 copyright = "© 2022 Giuseppe Mattia Greco"
 
 dateFormat = "2 January 2006"
 
 [author]
-  name = "Giuseppe Mattia Greco"
+  name = "Hi! I'm Giuseppe Mattia Greco"
   image = "img/blowfish_logo.png"
-  headline = "I'm an engineering student at Università della Calabria, in Italy."
-  bio = "I'm an engineering student at Università della Calabria, in Italy."
+  headline = "An engineering student at Università della Calabria, in Italy."
+  bio = "An engineering student at Università della Calabria, in Italy."
   # links = [
   #   { twitter = "https://twitter.com/mgreek_" },
   #   { github = "https://github.com/giumatt" },

@@ -1,0 +1,28 @@
+{
+    "email": {
+      "icon": "email",
+      "title": "contact.email",
+      "url": "mailto:giumatt99@gmail.com"
+    },
+    "facebook": {
+      "icon": "facebook",
+      "title": "contact.facebook",
+      "url": "https://www.facebook.com/mattia.greco.3950/"
+    },
+    "linkedin": {
+      "icon": "linkedin",
+      "title": "contact.linkedin",
+      "url": "https://www.linkedin.com/in/giuseppe-mattia-greco-099a921b1/"
+    },
+    "reddit": {
+      "icon": "reddit",
+      "title": "contact.reddit",
+      "url": "https://www.reddit.com/user/_IronAtlas_"
+    },
+    "twitter": {
+      "icon": "twitter",
+      "title": "contact.twitter",
+      "url": "https://twitter.com/mgreek_"
+    }
+  }
+  

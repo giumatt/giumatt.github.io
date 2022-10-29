@@ -31,11 +31,11 @@
   url = "https://github.com/giumatt"
   weight = 40
 
-[[main]]
-  identifier = "twitter"
-  pre = "twitter"
-  url = "https://twitter.com/mgreek_"
-  weight = 50
+# [[main]]
+#   identifier = "twitter"
+#   pre = "twitter"
+#   url = "https://twitter.com/mgreek_"
+#   weight = 50
 
 
 # -- Footer Menu --
