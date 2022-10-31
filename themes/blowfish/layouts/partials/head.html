@@ -6,11 +6,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta http-equiv="X-UA-Compatible" content="ie=edge" />
   {{/* Title */}}
-  {{ if .IsHome -}}
-  <title>{{ .Site.Title | emojify }}</title>
+   {{ if .IsHome -}}
+  <!-- <title>{{ .Site.Title | emojify }}</title> -->
+  <title>Giuseppe Mattia Greco</title>
   <meta name="title" content="{{ .Site.Title | emojify }}" />
   {{- else -}}
-  <title>{{ .Title | emojify }} &middot; {{ .Site.Title | emojify }}</title>
+  <title>{{ .Title | emojify }} {{ .Site.Title | emojify }}</title>
   <meta name="title" content="{{ .Title | emojify }} &middot; {{ .Site.Title | emojify }}" />
   {{- end }}
   {{/* Metadata */}}
@@ -122,7 +123,7 @@
   {{ partialCached "extend-head.html" .Site }}
   {{ end }}
   
-  {{/* Firebase */}}
+  <!-- {{/* Firebase */}}
   {{ with $.Site.Params.firebase }}
   {{ if isset $.Site.Params "firebase" }}
   <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
@@ -146,5 +147,5 @@
 
   </script>
   {{ end }}
-  {{ end }}
-</head>
+  {{ end }}-->
+</head> 

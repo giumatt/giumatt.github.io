@@ -6,7 +6,7 @@ weight = 1
 rtl = false
 
 title = ""
-logo = "img/blowfish_logo_transparent.png"
+logo = "img/Wave.png"
 description = "Giuseppe Mattia Greco's personal website"
 copyright = "© 2022 Giuseppe Mattia Greco"
 
@@ -14,9 +14,9 @@ dateFormat = "2 January 2006"
 
 [author]
   name = "Hi! I'm Giuseppe Mattia Greco"
-  image = "img/blowfish_logo.png"
-  headline = "An engineering student at Università della Calabria, in Italy."
-  bio = "An engineering student at Università della Calabria, in Italy."
+  image = "img/Ronin-face.jpg"
+  headline = "An italian engineering student at Università della Calabria."
+  bio = "An italian engineering student at Università della Calabria."
   # links = [
   #   { twitter = "https://twitter.com/mgreek_" },
   #   { github = "https://github.com/giumatt" },
