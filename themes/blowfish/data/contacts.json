@@ -23,6 +23,12 @@
       "icon": "twitter",
       "title": "contact.twitter",
       "url": "https://twitter.com/mgreek_"
+    },
+    "instagram": {
+      "icon": "instagram",
+      "title": "contact.twitter",
+      "url": "https://www.instagram.com/mattia_greek/"
     }
+
   }
   
