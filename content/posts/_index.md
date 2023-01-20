@@ -14,6 +14,6 @@ A collection of my projects and thoughts.
 
 ![Featured Blowfish image](featured.png)
 
-This section contains everything you need to know about Blowfish. If you're new, check out the  guide to begin or visit the  section to see what Blowfish can do.
+This section contains all my posts. Here will be posts about some projects, Linux things or just random stuff that I will keep here just for fun and to help me go out of my comfort zone.
 
 ---
