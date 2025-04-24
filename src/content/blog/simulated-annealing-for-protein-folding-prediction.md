@@ -1,73 +1,79 @@
 ---
-title: "Simulated annealing strategy to optimize protein folding prediction."
-date: 2025-04-23
-description: "A deep dive into how simulated annealing, low-level optimization, and parallel computing can enhance protein folding simulations."
-tags: ["simulated annealing", "protein folding", "assembly", "openmp", "c", "performance optimization"]
+title: "Optimizing Protein Folding Prediction: From C to OpenMP"
+date: 2025-04-22
+description: "A deep dive into how simulated annealing, assembly, and parallelization techniques improved a protein folding simulation pipeline."
+tags: ["simulated annealing", "protein folding", "assembly", "openmp", "c", "optimization"]
 ---
 
-## Project overview
+## Introduction
 
-In the context of my Master's Degree couse in Advanced Architectures of Processing Systems and
-Programming, we developed and optimized a system that predicts protein tertiary structure using **Simulated Annealing (SA)**.
+This project was developed as part of the course *Advanced Architectures of Processing Systems and Programming*, within a Master's Degree in Computer Engineering. It explores the application of Simulated Annealing (SA) to the protein tertiary structure prediction problem. Our primary objective was to optimize the algorithm’s performance across three fronts: algorithm design, low-level implementation, and parallel execution.
 
-Our journey followed three progressive phases:
-1. A clear, modular **C implementation**.
-2. **Assembly-level optimization** for key mathematical operations.
-3. **Parallelization with OpenMP** to leverage multicore CPUs.
+By starting with a clean C implementation and iteratively refining it through Assembly-level tuning and OpenMP-based parallelism, we achieved a significant reduction in execution time—without compromising result accuracy or precision.
 
-The goal? Significantly reduce execution time without compromising result accuracy.
+## What is Simulated Annealing?
+
+Simulated Annealing is a metaheuristic inspired by the physical process of slowly cooling heated metals to remove internal defects. In optimization, it’s used to escape local minima by allowing (with decreasing probability) moves to worse solutions early in the process. This trade-off between exploration and exploitation enables the algorithm to converge toward a global optimum over time.
+
+In the context of protein folding, SA is particularly suitable: the search space is vast, the energy landscape is rugged, and deterministic methods often get stuck in suboptimal conformations.
 
 ## Why Protein Folding?
 
-Predicting how a protein folds is essential for understanding its function. Yet, it’s a computationally complex problem due to the astronomical number of possible conformations. Our approach uses simulated annealing to iteratively search for low-energy structures in 3D space.
+A protein's function is determined by its 3D structure, which in turn arises from the sequence of amino acids. Predicting this tertiary structure is computationally challenging and biologically crucial.
 
-## Simulated annealing
-Simulated Annealing is a ***probabilistic optimization*** algorithm inspired by the annealing process in metallurgy, where a material is heated and then slowly cooled to remove defects. In computational terms, the algorithm explores the solution space by accepting not only better solutions but occasionally worse ones, especially at higher “temperatures.” As the temperature decreases, the algorithm becomes more selective, reducing the chance of getting trapped in local minima and increasing the likelihood of finding a global optimum.
+We implemented a physics-inspired model using dihedral angles (ϕ and ψ) to simulate the folding process. The goal is to find an atom configuration that minimizes the total energy of the structure, balancing physical forces like electrostatic repulsion, hydrophobic interactions, and geometric constraints.
 
-## Phase 1: The C Implementation
+## Phase 1: Modular C Implementation
 
-We first implemented the core algorithm in C, focusing on:
-- Modularity: each function performs a single, testable task.
-- Efficient data layout: 3D coordinates stored in linear, row-major format.
-- Key operations: vector normalization, 3D rotations, and distance computations between atoms.
+The first version of the algorithm was written entirely in C, with special attention to:
 
-We introduced a fast distance matrix via a **linear vector indexed with a custom formula** instead of a full 2D matrix, reducing memory and computational overhead.
+- Modular design: each operation (e.g., sine/cosine, distance, rotation) was encapsulated for testing and reuse.
+- Data layout: the atomic coordinates were stored in a flat matrix using row-major order for efficient memory access.
+- Geometric transformations: custom `rotation` and `apply_rotation` functions were used to manipulate 3D structures based on angle values.
+- Distance computation: Instead of recomputing pairwise distances at each iteration, a dedicated `distances` vector and mapping function (`get_distance_index`) was created to store only unique atom pairs, minimizing redundancy.
 
-## Phase 2: Assembly Optimization
+This foundation ensured clean logic and good performance, setting the stage for deeper optimization.
 
-To further enhance performance, we rewrote key functions like `normalize` and `apply_rotation` in Assembly using:
-- **SSE and AVX instructions** for SIMD parallelism.
-- Memory alignment and padding for register efficiency.
-- Optimized matrix-vector multiplications.
+## Phase 2: Assembly-Level Optimization
 
-This allowed better cache usage and faster math operations—particularly important when thousands of atoms are involved.
+Next, we ported the most performance-critical routines to Assembly, specifically targeting:
 
-## Phase 3: Parallel Computing with OpenMP
+- `normalize` function: optimized using SSE (32-bit) and AVX (64-bit) instructions to operate on 4-element vectors.
+- `apply_rotation` function: matrix-vector multiplication was optimized using SIMD registers to compute dot products faster.
+- Data padding and alignment: we modified vectors and matrices to align with SIMD register widths (3 → 4 elements), ensuring efficient memory access.
 
-Finally, we parallelized the most time-intensive sections using OpenMP:
-- The `combined_energy` and `rama_energy_unrolled` functions benefited most.
-- We used `#pragma omp parallel for` with dynamic scheduling and reduction clauses to efficiently share work between threads.
+While rewriting the entire algorithm in Assembly was infeasible due to complexity and overhead, focusing on these hotspots led to a substantial performance boost.
 
-OpenMP helped scale performance across cores, especially for long sequences with many amino acids.
+## Phase 3: OpenMP Parallelization
 
-## Results
+We then introduced multi-core parallelism with OpenMP, applied to:
 
-We benchmarked three main versions (C, Assembly, and OpenMP). Over 10 executions:
+- `combined_energy` — a wrapper that sums hydrophobic, electrostatic, and packing energies.
+- `rama_energy_unrolled` — an unrolled loop that computes energy contributions for dihedral angles.
 
-- **Base C**: ~1.8 s  
-- **Assembly Optimized**: ~0.5 s  
-- **OpenMP Parallelized**: ~0.4 s  
+To maximize efficiency, we used:
+- `#pragma omp parallel for` for loop-level parallelism,
+- `reduction` clauses to safely sum energy across threads,
+- `schedule(dynamic, X)` to adaptively distribute work and minimize thread idle time.
 
-Also, using **double precision** in the 64-bit version dramatically improved accuracy. While `float` is faster, the `MSE` was noticeably higher, which matters in scientific contexts.
+Residual values (not divisible by 4) were handled separately to avoid over-threading trivial loops.
+
+## Benchmark Results
+
+We compared execution times across versions (averaged over 10 runs):
+
+| Version                | 32-bit (s) | 64-bit (s) |
+|------------------------|------------|------------|
+| Base C Implementation  | 1.79       | 1.65       |
+| With distance caching  | 0.82       | 0.74       |
+| With loop unrolling    | 0.81       | 0.75       |
+| With Assembly (SSE/AVX)| 0.54       | 0.51       |
+| With OpenMP            | 0.46       | 0.41       |
+
+We also assessed accuracy using MSE between float/double values. The 64-bit double-precision version yielded zero error vs. reference values, highlighting its scientific reliability.
 
 ## Final Thoughts
 
-This project showed how you can combine high-level algorithm design with low-level optimization and parallel computing to tackle real-world, computationally expensive problems like protein folding.
+This project shows how multi-layered optimization—from algorithm logic to hardware-specific tuning—can transform a scientific simulation. Each step of refinement, from restructuring data to leveraging SIMD and multithreading, brought measurable improvements.
 
-> “From code clarity to hardware-level performance, this journey was as much about *structure* as the proteins we simulated.”
-
-Check out the [full project on GitHub](https://github.com/giumatt/Simulated-Annealing-for-Protein-Folding-Prediction).
-
----
-
-Let us know what you think, or share your own experiments with simulated annealing and protein folding!
+Explore the [full project on GitHub](https://github.com/giumatt/Simulated-Annealing-for-Protein-Folding-Prediction) and feel free to contribute, test, or fork it for your own experiments.
