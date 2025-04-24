@@ -24,3 +24,8 @@ pnpm-debug.log*
 .idea/
 
 .vscode/
+
+.prettierrc.mjs
+package-lock.json
+package.json
+pnpm-lock.yaml
