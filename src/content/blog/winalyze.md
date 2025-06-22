@@ -1,7 +1,7 @@
 ---
 title: "Winalyze"
 description: "A real-world machine learning project using Python, Azure Functions, and GitHub Actions to predict wine quality — fully automated, scalable, and cloud-native."
-publishDate: 2025-06-22
+date: 2025-06-22
 author: "Giuseppe Mattia Greco"
 ---
 

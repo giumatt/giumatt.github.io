@@ -1,7 +1,7 @@
 ---
 title: "Giving Voice to Art: How IoT and NLP Are Revolutionizing Museum Experiences"
 description: "Discover how a smart museum project uses audio sensors and real-time sentiment analysis to understand visitors' emotions and reshape cultural spaces."
-publishDate: 2025-06-22
+date: 2025-06-22
 author: "Giuseppe Mattia Greco"
 ---
 
