@@ -1,6 +1,6 @@
 ---
 title: "Simulated annealing strategy to optimize protein folding prediction"
-date: 2025-04-22
+date: 2025-06-22
 description: "A deep dive into how simulated annealing, assembly, and parallelization techniques improved a protein folding simulation pipeline."
 tags: ["simulated annealing", "protein folding", "assembly", "openmp", "c", "optimization"]
 ---
