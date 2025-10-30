@@ -109,6 +109,32 @@ const projects: CollectionEntry<"projects">[] = (
       </section>
 
       <section class="animate space-y-4">
+        <h2 class="font-semibold text-black dark:text-white">Curriculum Vitae</h2>
+        <article>
+          <p>
+            Check out my Curriculum Vitae.
+          </p>
+        </article>
+        <div class="not-prose">
+          <a
+            href="/cv_en.pdf"
+            target="_blank"
+            aria-label="Download CV"
+            class="inline-flex items-center gap-2 rounded-lg border border-black/15 bg-neutral-100 px-4 py-2 text-sm transition-colors duration-300 ease-in-out hover:bg-black/5 hover:text-black focus-visible:bg-black/5 focus-visible:text-black dark:border-white/20 dark:bg-neutral-900 dark:hover:bg-white/5 dark:hover:text-white dark:focus-visible:bg-white/5 dark:focus-visible:text-white"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+              <polyline points="14 2 14 8 20 8"></polyline>
+              <line x1="16" y1="13" x2="8" y2="13"></line>
+              <line x1="16" y1="17" x2="8" y2="17"></line>
+              <polyline points="10 9 9 9 8 9"></polyline>
+            </svg>
+            View CV (PDF)
+          </a>
+        </div>
+      </section>
+
+      <section class="animate space-y-4">
         <h2 class="font-semibold text-black dark:text-white">Let's Connect</h2>
         <article>
           <p>
@@ -140,6 +166,23 @@ const projects: CollectionEntry<"projects">[] = (
             </Link>
           </li>
         </ul>
+        <article class="mt-4">
+          <p class="text-sm">
+            GPG Key: <a
+              href="/giumatt-public-key.asc"
+              download
+              class="inline-flex items-center gap-2 text-base font-mono hover:opacity-70 transition-opacity duration-300 cursor-pointer underline decoration-black/30 dark:decoration-white/30 hover:decoration-black/50 dark:hover:decoration-white/50 underline-offset-2"
+              aria-label="Download GPG public key"
+            >
+              6D3A AC8B 98B3 6CC2 D5E5  3505 3EB8 3A7D E3BA 1E3B
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                <polyline points="7 10 12 15 17 10"></polyline>
+                <line x1="12" y1="15" x2="12" y2="3"></line>
+              </svg>
+            </a>
+          </p>
+        </article>
       </section>
     </div>
   </Container>
