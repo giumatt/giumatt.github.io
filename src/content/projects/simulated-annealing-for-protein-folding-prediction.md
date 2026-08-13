@@ -76,4 +76,8 @@ We also assessed accuracy using MSE between float/double values. The 64-bit doub
 
 This project shows how multi-layered optimization—from algorithm logic to hardware-specific tuning—can transform a scientific simulation. Each step of refinement, from restructuring data to leveraging SIMD and multithreading, brought measurable improvements.
 
-Explore the [full project on GitHub](https://github.com/giumatt/Simulated-Annealing-for-Protein-Folding-Prediction) and feel free to contribute, test, or fork it for your own experiments.
+## Contributing
+
+You can review the code and contribute to it at the following link:
+
+[![GitHub Repository](https://img.shields.io/badge/GitHub-Smart_MicroGrid-181717?style=for-the-badge&logo=github)](https://github.com/giumatt/Simulated-Annealing-for-Protein-Folding-Prediction)

@@ -11,15 +11,11 @@ This project, developed as part of a Distributed Systems and Cloud Computing cou
 
 Let’s dive into how it works.
 
----
-
 ## The Use Case: Predicting Wine Quality with ML
 
 We used the famous **Wine Quality Dataset** (UCI), which contains physicochemical measurements of red and white wines, along with quality scores from human tasters.
 
 The goal: train a supervised model (Random Forest) to classify wine quality and make real-time predictions on new samples.
-
----
 
 ## Architecture at a Glance
 
@@ -33,8 +29,6 @@ The system is composed of **five Azure Functions**, each responsible for a disti
 
 Each function is **stateless**, **event-driven**, and independently deployable — following the best practices of cloud-native software engineering.
 
----
-
 ## The ML Side: Random Forest in Python
 
 All logic is written in **Python 3.12**, leveraging:
@@ -47,8 +41,6 @@ Each model is trained separately for red and white wines to improve specializati
 
 All training steps are wrapped in `async` functions to maximize performance in resource-constrained serverless environments.
 
----
-
 ## Cloud Native by Design
 
 Built entirely on **Microsoft Azure**, the architecture includes:
@@ -59,8 +51,6 @@ Built entirely on **Microsoft Azure**, the architecture includes:
 - **GitHub Actions** for CI/CD — from build to deploy with auto-merge logic on model validation.
 
 Thanks to the serverless model, you **only pay per execution**. There’s no need to manage infrastructure or worry about scaling — Azure handles it all.
-
----
 
 ## Frontend: A Minimal but Reactive Vue.js App
 
@@ -78,8 +68,6 @@ Key features:
 
 Each interaction with the backend is **asynchronous and error-resilient**, ensuring a smooth user experience even in edge cases.
 
----
-
 ## Security & DevOps
 
 Security is handled with care:
@@ -90,8 +78,6 @@ Security is handled with care:
 
 The deployment process is fully automated via GitHub Actions, with **auto-promotion of better-performing models** using performance benchmarks and versioning logic.
 
----
-
 ## Key Features Recap
 
 - Fully **automated ML pipeline** using serverless functions
@@ -99,8 +85,6 @@ The deployment process is fully automated via GitHub Actions, with **auto-promot
 - Scalable, modular architecture with **low operational cost**
 - Reactive, user-friendly web app for easy dataset uploads and predictions
 - Built-in security and CI/CD pipelines
-
----
 
 ## What’s Next?
 
@@ -112,3 +96,9 @@ There’s room to grow:
 - Graphical analytics and export features in the frontend
 
 The current system already meets real-world standards for robustness, modularity, and automation — and is ready to scale.
+
+## Contributing
+
+You can review the code and contribute to it at the following link:
+
+[![GitHub Repository](https://img.shields.io/badge/GitHub-Smart_MicroGrid-181717?style=for-the-badge&logo=github)](https://github.com/giumatt/Winalyze)

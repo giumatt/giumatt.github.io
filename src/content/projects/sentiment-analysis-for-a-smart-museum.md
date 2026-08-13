@@ -65,3 +65,9 @@ The foundation is solid, but the future promises even more:
 - **Scalable, plug-and-play deployment** for other environments (retail, education, events)
 
 Open-sourcing the platform would allow institutions to adopt and adapt the system to fit their unique needs.
+
+## Contributing
+
+You can review the code and contribute to it at the following link:
+
+[![GitHub Repository](https://img.shields.io/badge/GitHub-Smart_MicroGrid-181717?style=for-the-badge&logo=github)](https://github.com/giumatt/Sentiment-Analysis-for-a-Smart-Museum)
