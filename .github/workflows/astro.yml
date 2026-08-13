@@ -27,13 +27,11 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      # 1. Installiamo esplicitamente pnpm
+      # 1. Install pnpm using the version declared in package.json
       - name: Install pnpm
         uses: pnpm/action-setup@v4
-        with:
-          version: 9
 
-      # 2. Aggiorniamo Node alla versione 22 e leghiamo la cache a pnpm
+      # 2. Use Node 22 and cache pnpm dependencies
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
